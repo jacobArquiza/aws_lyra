@@ -1,4 +1,4 @@
-BASE_URL = `https:/0e8240d126c3.ngrok-free.app/`
+BASE_URL = `http://127.0.0.1:8080`
 
 async function chat(message, sessionId = "default") {
   const res = await fetch(`${BASE_URL}/chat`, {
