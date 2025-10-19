@@ -39,10 +39,10 @@ response_form.addEventListener('submit', (event)=>{
 
     res.then((data)=>{
         if(data.done){
-            document.querySelector('#lyra-wants-to-know').textContent = data.assistant;
+            document.querySelector('#lyra-question').textContent = data.assistant;
         }
         else{
-            document.querySelector('#lyra-wants-to-know').textContent = "DONE";
+            document.querySelector('#lyra-question').textContent = "DONE";
             console.log(data.assistant);
         }
     })
