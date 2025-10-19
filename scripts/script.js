@@ -55,12 +55,12 @@ response_form.addEventListener('submit', (event)=>{
     res.then((data)=>{
         if(!data.done){
             document.querySelector('#lyra-question').textContent = data.assistant;
-            loading.classList.add(hidden);
+            loading.classList.add("hidden");
         }
         else{
             document.querySelector('#lyra-question').textContent = "QUESTIONING COMPLETE";
             console.log(data.assistant);
-            loading.classList.add(hidden);
+            loading.classList.add("hidden");
             
             const targetPage = 'html/lyra-build.html';
             window.location.href = targetPage;
