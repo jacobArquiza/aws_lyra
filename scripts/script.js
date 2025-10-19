@@ -23,16 +23,14 @@ response_form = document.querySelector('#lyra-input-form');
 const intial_response_stub = "This is an overview of my project. Please ask me any question that will help you get the context you need to create the key artifacts. ";
 
 response_form.addEventListener('submit', (event)=>{
-
-
     event.preventDefault();
     
-    const textarea = response_form.querySelector("#input-text-area");
+    const textarea = form.querySelector("#input-text-area");
     const userInput = textarea.value.trim();
     let res;
 
     if(initial_response){
-        res = chat(intial_response_stub + userInput);
+        res = chat(initial_response_stub + userInput);
         initial_response = false;
     }
     else{
@@ -40,7 +38,13 @@ response_form.addEventListener('submit', (event)=>{
     }
 
     res.then((data)=>{
-        console.log(JSON.stringify(data));
+        if(data.done){
+            document.querySelector('#lyra-wants-to-know').textContent = data.assistant;
+        }
+        else{
+            document.querySelector('#lyra-wants-to-know').textContent = "DONE";
+            console.log(data.assistant);
+        }
     })
 
 })
