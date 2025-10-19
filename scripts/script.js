@@ -27,7 +27,7 @@ response_form.addEventListener('submit', (event)=>{
 
     event.preventDefault();
     
-    const textarea = form.querySelector("#input-textarea");
+    const textarea = form.querySelector("#input-text-area");
     const userInput = textarea.value.trim();
     let res;
 
