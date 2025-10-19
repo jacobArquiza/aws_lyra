@@ -55,8 +55,9 @@ response_form.addEventListener('submit', (event)=>{
 
     res.then((data)=>{
         if(!data.done){
+            text = data.assistant.replace('*', '');
             questionCount += 1;
-            document.querySelector('#lyra-question').textContent = data.assistant;
+            document.querySelector('#lyra-question').textContent = text;
             document.querySelector('#lyra-question-count').textContent = questionCount;
             loading.classList.add("hidden");
         }
