@@ -35,6 +35,30 @@
   </script>
 </head>
 <body class="w-full h-screen grid grid-rows-[5%_90%_5%]">    
+    <dialog id="pm-spec-modal" class="modal">
+        <div class="modal-box max-h-[80vh] max-w-[40vw] flex flex-col gap-4 overflow-y-auto"> 
+            <div id="document-container">
+                
+            </div>
+            
+        <div class="modal-action"> 
+            <form method="dialog" class="space-x-1 w-full flex justify-end">
+                <button id="copy" type="button" class="btn btn-neutral rounded-full mr-3">Copy</button>
+                
+                <button class="btn">Close</button>
+            </form>
+        </div>
+        </div>
+    </dialog>
+    <dialog id="sprint-schedule-modal" class="modal">
+        <div class="modal-box max-w-none w-[40vw] flex flex-col gap-4"> 
+            <form method="dialog" class="space-x-1">
+                <div class="btn btn-neutral rounded-full mr-auto">Last Question</div>
+                <div class="btn btn-neutral rounded-full mr-3">Next Question</div>
+                <button class="btn">Close</button>
+            </form>
+        </div>
+    </dialog>
     <div class="bg-[#232F3E] w-full h-full sticky top-0"></div>
     <div class="w-[90%] mx-auto  h-full grid grid-rows-[60%_40%] p-5">
         <div class="w-full h-full grid grid-cols-[40%_60%]">
@@ -62,7 +86,7 @@
                             </h2>
                             <p>PM Spec for [PROJECT TITLE].</p>
                             <div class="card-actions justify-end">
-                            <div class="btn badge badge-outline">OPEN</div>
+                            <div id="pm-spec-open"class="btn badge badge-outline">OPEN</div>
                             </div>
                         </div>
                     
@@ -81,7 +105,7 @@
                             </h2>
                             <p>Sprint Schedule.</p>
                             <div class="card-actions justify-end">
-                            <div class="btn badge badge-outline">OPEN</div>
+                            <div id="sprint-schedule-open"class="btn badge badge-outline">OPEN</div>
                             </div>
                             
                         </div>
@@ -93,9 +117,10 @@
             </div>
         </div>
         <div class="w-full h-full flex justify-end items-end">
-            <div class="btn btn-warning">Regenerate</div>
+            <div id="regenerate" class="btn btn-warning">Regenerate</div>
         </div>
     </div>
 </body>
-<script src="sprintScheduleManager.js"></script>
+    <script src="../scripts/outputManager.js"></script>
+    <script src="../scripts/sprintScheduleManager.js"></script>
 </html>
