@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../assets/fonts.css" />
     <title>Lyra Builder</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt@0.6.1/dist/frappe-gantt.css" />
+    <script src="https://cdn.jsdelivr.net/npm/frappe-gantt@0.6.1/dist/frappe-gantt.min.js"></script>
     <script>
     tailwind.config = {
       theme: {
@@ -74,16 +76,19 @@
                         </figure>
                         <div class="card-body">
                             <h2 class="card-title">
-                            CodeCatalyst Backlog
-                            <div class="badge badge-secondary">BP</div>
+                            Sprint Schedule
+                            <div class="badge badge-secondary">Gantt</div>
                             </h2>
-                            <p>CodeCatalyst blueprint for [PROJECT TITLE].</p>
+                            <p>Sprint Schedule.</p>
                             <div class="card-actions justify-end">
                             <div class="btn badge badge-outline">OPEN</div>
                             </div>
+                            
                         </div>
                     </div>
-                    
+                    <div class="" id="schedule-display">
+                        
+                    </div> 
                 </div>
             </div>
         </div>
@@ -92,4 +97,5 @@
         </div>
     </div>
 </body>
+<script src="sprintScheduleManager.js"></script>
 </html>

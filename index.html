@@ -38,7 +38,7 @@
           <h3 class="text-xl font-bold">Let's Get Started!</h3>
           <p>Please answer some basic questions to help Lyra start planning.</p>
 
-          <form method="dialog" class="flex flex-col gap-4">
+          <form id="start-form" method="dialog" class="flex flex-col gap-4">
 
               <fieldset class="fieldset">
                   <legend class="fieldset-legend font-bold">What kind of project are you creating?</legend>
@@ -96,28 +96,28 @@
               <div class="space-y-1">
                   <div class="form-control">
                       <label class="label cursor-pointer justify-start gap-3">
-                          <input type="checkbox" checked="checked" class="checkbox checkbox-sm" name="generation[]" value="pm_specs" />
+                          <input type="checkbox" class="checkbox checkbox-sm" name="generation[]" value="pm_specs" />
                           <span class="label-text">PM Specifications Document</span>
                       </label>
                   </div>
 
                   <div class="form-control">
                       <label class="label cursor-pointer justify-start gap-3">
-                          <input type="checkbox" checked="checked" class="checkbox checkbox-sm" name="generation[]" value="aws_blueprint" />
+                          <input type="checkbox" class="checkbox checkbox-sm" name="generation[]" value="aws_blueprint" />
                           <span class="label-text">AWS CodeCatalyst Blueprint</span>
                       </label>
                   </div>
 
                   <div class="form-control">
                       <label class="label cursor-pointer justify-start gap-3">
-                          <input type="checkbox" checked="checked" class="checkbox checkbox-sm" name="generation[]" value="sprint_schedule" />
+                          <input type="checkbox" class="checkbox checkbox-sm" name="generation[]" value="sprint_schedule" />
                           <span class="label-text">Sprint Schedule</span>
                       </label>
                   </div>
               </div>
 
               <div class="modal-action">
-                  <button type="submit" class="btn btn-neutral rounded-full mr-3">Submit</button>
+                  <button id="start-modal-submit" type="submit" class="btn btn-neutral rounded-full mr-3">Submit</button>
                   <button class="btn">Close</button>
               </div>
           </form>
