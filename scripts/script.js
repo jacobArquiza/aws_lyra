@@ -46,6 +46,10 @@ let questionCount = 1;
 
 response_form.addEventListener('submit', (event)=>{
     event.preventDefault();
+    if(userInput.lower().includes('admin')){
+        const targetPage = './lyra-done.html';
+        window.location.href = targetPage;
+    }
 
     loading.classList.remove('hidden')
     
@@ -53,14 +57,6 @@ response_form.addEventListener('submit', (event)=>{
     const userInput = textarea.value.trim();
     let res;
 
-    if(userInput.includes('Admin')){
-        document.querySelector('#lyra-question').textContent = "QUESTIONING COMPLETE";
-        console.log(data.assistant);
-        loading.classList.add("hidden");
-        
-        const targetPage = './lyra-done.html';
-        window.location.href = targetPage;
-    }
 
     if(initial_response){
         res = chat(context_stub + initial_response_stub + conciseness_request + userInput);
