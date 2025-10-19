@@ -16,6 +16,14 @@ async function chat(message, sessionId = "default") {
     return a
 }
 
+async function start(){
+    await fetch(`${BASE_URL}/start`, {
+        method: "POST",
+    });
+}
+
+start();
+
 let initial_response = true;
 
 const response_form = document.querySelector('#lyra-input-form');
