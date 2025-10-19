@@ -27,12 +27,12 @@ response_form.addEventListener('submit', (event)=>{
 
     event.preventDefault();
     
-    const textarea = form.querySelector("#input-text-area");
+    const textarea = response_form.querySelector("#input-text-area");
     const userInput = textarea.value.trim();
     let res;
 
     if(initial_response){
-        res = chat(initial_response_stub + userInput);
+        res = chat(intial_response_stub + userInput);
         initial_response = false;
     }
     else{
