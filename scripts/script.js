@@ -46,6 +46,10 @@ let questionCount = 1;
 
 response_form.addEventListener('submit', (event)=>{
     event.preventDefault();
+    const textarea = response_form.querySelector("#input-text-area");
+    const userInput = textarea.value.trim();
+    let res;
+    
     if(userInput.lower().includes('admin')){
         const targetPage = './lyra-done.html';
         window.location.href = targetPage;
@@ -53,9 +57,6 @@ response_form.addEventListener('submit', (event)=>{
 
     loading.classList.remove('hidden')
     
-    const textarea = response_form.querySelector("#input-text-area");
-    const userInput = textarea.value.trim();
-    let res;
 
 
     if(initial_response){

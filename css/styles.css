@@ -1,4 +1,4 @@
-1. Keyframes (Unchanged)
+/* 1. Keyframes (Unchanged) */
 @keyframes aura-cycle {
     0%   { filter: hue-rotate(0deg); }
     100% { filter: hue-rotate(360deg); }
