@@ -21,6 +21,7 @@ initial_response = true;
 response_form = document.querySelector('#lyra-input-form');
 
 const initial_response_stub = "This is an overview of my project. Please ask me any question that will help you get the context you need to create the key artifacts. ";
+const conciseness_request = "Please ensure your return question is concise, at most two sentences. If it cannot be contained within two sentences, please ask the question in multiple parts accross multiple back-and-forths ."
 
 response_form.addEventListener('submit', (event)=>{
     event.preventDefault();
@@ -30,11 +31,11 @@ response_form.addEventListener('submit', (event)=>{
     let res;
 
     if(initial_response){
-        res = chat(initial_response_stub + userInput);
+        res = chat(initial_response_stub + conciseness_request + userInput);
         initial_response = false;
     }
     else{
-        res = chat(userInput);
+        res = chat(conciseness_request + userInput);
     }
 
     res.then((data)=>{
