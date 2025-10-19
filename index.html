@@ -33,7 +33,97 @@
   </script>
 </head>
 <body class="w-full h-screen grid grid-rows-[5%_90%_5%]">
-    <div class="bg-[#232F3E] w-full h-full"></div>
+    <dialog id="get_started_modal" class="modal">
+      <div class="modal-box max-w-none w-[40vw] flex flex-col gap-4">
+          <h3 class="text-xl font-bold">Let's Get Started!</h3>
+          <p>Please answer some basic questions to help Lyra start planning.</p>
+
+          <form method="dialog" class="flex flex-col gap-4">
+
+              <fieldset class="fieldset">
+                  <legend class="fieldset-legend font-bold">What kind of project are you creating?</legend>
+                  <select class="select select-bordered w-full" name="project_type">
+                      <option disabled selected>Pick an option</option>
+                      <option value="software_app">Software/App Development</option>
+                      <option value="website_ecommerce">Website/E-Commerce Launch</option>
+                      <option value="marketing_campaign">Marketing Campaign</option>
+                      <option value="construction">Construction/Physical Build</option>
+                      <option value="new_product">New Product Development</option>
+                      <option value="internal_process">Internal Process Development</option>
+                      <option value="rnd">Research and Development</option>
+                      <option value="devops">DevOps Project</option>
+                      <option value="system_pipeline">New System or Pipeline</option>
+                      <option value="other">Other</option>
+                  </select>
+              </fieldset>
+              <fieldset class="fieldset">
+                  <legend class="fieldset-legend font-bold">How big is your team?</legend>
+                  <select class="select select-bordered w-full" name="team_size">
+                      <option disabled selected>Number of people</option>
+                      <option value="solo">Solo</option>
+                      <option value="duo">Duo</option>
+                      <option value="trio">Trio</option>
+                      <option value="3-4">3-4</option>
+                      <option value="5-10">5-10</option>
+                      <option value="10-20">10-20</option>
+                      <option value="20+">20+</option>
+                  </select>
+              </fieldset>
+              <fieldset class="fieldset">
+                  <legend class="fieldset-legend font-bold">Estimated project duration?</legend>
+                  <select class="select select-bordered w-full" name="duration">
+                      <option disabled selected>Pick a duration</option>
+                      <option value="<1week">Less than a week</option>
+                      <option value="1-4weeks">1-4 weeks</option>
+                      <option value="4-12weeks">4-12 weeks</option>
+                      <option value="3-9months">3-9 months</option>
+                      <option value="9-18months">9-18 months</option>
+                      <option value="18months-5years">18 months-5 years</option>
+                      <option value="5years+">5 years+</option>
+                  </select>
+              </fieldset>
+              <fieldset class="fieldset">
+                  <legend class="fieldset-legend font-bold">What SDLC Model are you using?</legend>
+                  <select class="select select-bordered w-full" name="sdlc_model">
+                      <option disabled selected>Pick an SDLC Model</option>
+                      <option value="agile">Agile</option>
+                      <option value="waterfall">Waterfall</option>
+                      <option value="other">Other</option>
+                      <option value="none">None</option>
+                  </select>
+              </fieldset>
+              <p class="font-bold">What would you like Lyra to generate?</p>
+              <div class="space-y-1">
+                  <div class="form-control">
+                      <label class="label cursor-pointer justify-start gap-3">
+                          <input type="checkbox" checked="checked" class="checkbox checkbox-sm" name="generation[]" value="pm_specs" />
+                          <span class="label-text">PM Specifications Document</span>
+                      </label>
+                  </div>
+
+                  <div class="form-control">
+                      <label class="label cursor-pointer justify-start gap-3">
+                          <input type="checkbox" checked="checked" class="checkbox checkbox-sm" name="generation[]" value="aws_blueprint" />
+                          <span class="label-text">AWS CodeCatalyst Blueprint</span>
+                      </label>
+                  </div>
+
+                  <div class="form-control">
+                      <label class="label cursor-pointer justify-start gap-3">
+                          <input type="checkbox" checked="checked" class="checkbox checkbox-sm" name="generation[]" value="sprint_schedule" />
+                          <span class="label-text">Sprint Schedule</span>
+                      </label>
+                  </div>
+              </div>
+
+              <div class="modal-action">
+                  <button type="submit" class="btn btn-neutral rounded-full mr-3">Submit</button>
+                  <button class="btn">Close</button>
+              </div>
+          </form>
+      </div>
+  </dialog>
+    <div class="bg-[#232F3E] w-full h-full sticky top-0"></div>
       <div class="grid grid-rows-[50%_1fr]">
         <div class="bg-gradient-to-b from-blue-200 to-white grid grid-[60%_40%] p-8">
           <div class="flex justify-center items-center">
@@ -43,15 +133,15 @@
             </span>
           </div>
           <div class="flex justify-center items-center">
-            <button class="btn btn-neutral rounded-full w-[30%] text-lg text-white">Start Planning with Lyra</button>
+            <button id="start-planning-with-lyra" class="btn btn-neutral rounded-full w-[30%] text-lg text-white">Start Planning with Lyra</button>
           </div>
         </div>
         
         <div class="w-[85%] mx-auto">
           <h1 class="text-2xl font-semibold">Current Projects Planned with Lyra</h1>
-          <div class="p-5">
+          <div id="current-projects-container" class="">
             <button class="hover:cursor-pointer">
-              <div class="card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
+              <div class="m-2 card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
                 <figure class="aspect-[4/3] overflow-hidden">
                   <img
                     src="https://picsum.photos/640/480"
@@ -68,7 +158,7 @@
               </div>
             </button>
             <button class="hover:cursor-pointer">
-              <div class="card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
+              <div class="m-2 card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
                 <figure class="aspect-[4/3] overflow-hidden">
                   <img
                     src="https://picsum.photos/640/480"
@@ -85,7 +175,7 @@
               </div>
             </button>
             <button class="hover:cursor-pointer">
-              <div class="card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
+              <div class="m-2 card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
                 <figure class="aspect-[4/3] overflow-hidden">
                   <img
                     src="https://picsum.photos/640/480"
@@ -102,7 +192,7 @@
               </div>
             </button>
             <button class="hover:cursor-pointer">
-              <div class="card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
+              <div class="m-2 card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
                 <figure class="aspect-[4/3] overflow-hidden">
                   <img
                     src="https://picsum.photos/640/480"
@@ -119,7 +209,7 @@
               </div>
             </button>
             <button class="hover:cursor-pointer">
-              <div class="card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
+              <div class="m-2 card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
                 <figure class="aspect-[4/3] overflow-hidden">
                   <img
                     src="https://picsum.photos/640/480"
@@ -136,7 +226,7 @@
               </div>
             </button>
             <button class="hover:cursor-pointer">
-              <div class="card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
+              <div class="m-2 card card-compact w-60 sm:w-64 md:w-72 bg-base-100 shadow-md">
                 <figure class="aspect-[4/3] overflow-hidden">
                   <img
                     src="https://picsum.photos/640/480"
@@ -155,6 +245,6 @@
           </div>
         </div>
       </div>
-    <div class="bg-[#232F3E] w-full h-full"></div>
+      <script src="../lyra/scripts/modalManager.js"></script>
 </body>
 </html>

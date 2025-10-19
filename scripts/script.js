@@ -38,7 +38,7 @@ response_form.addEventListener('submit', (event)=>{
     }
 
     res.then((data)=>{
-        if(data.done){
+        if(!data.done){
             document.querySelector('#lyra-question').textContent = data.assistant;
         }
         else{
