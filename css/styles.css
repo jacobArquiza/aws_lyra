@@ -1,0 +1,27 @@
+1. Keyframes (Unchanged)
+@keyframes aura-cycle {
+    0%   { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* 2. The Updated 'rainbow' Class */
+.rainbow {
+    position: relative;
+    transition: box-shadow 0.25s ease-in-out; 
+}
+
+/* 3. The Hover State: Tighter Spread */
+.rainbow:hover {
+    box-shadow: 
+        /* Shadow 1: Blue - Reduced Blur (20px) and TIGHTER Spread (2px) */
+        0 0 20px 2px rgba(0, 150, 255, 0.5), 
+        /* Shadow 2: Pink - Reduced Blur (30px) and TIGHTER Spread (5px) */
+        0 0 30px 5px rgba(255, 0, 200, 0.4), 
+        /* Shadow 3: Purple - Reduced Blur (40px) and TIGHTER Spread (8px) */
+        0 0 40px 8px rgba(150, 0, 255, 0.3); 
+
+    /* Note: We kept the blur (3rd value) slightly large to maintain the glow effect,
+       but the tighter spread (4th value) keeps the glow close to the element. */
+       
+    animation: aura-cycle 10s linear infinite;
+}

@@ -142,10 +142,12 @@ if (copyButton && contentToCopy) {
             
             copyButton.textContent = "Copied!";
             copyButton.classList.add('btn-success');
+            copyButton.classList.add('text-white');
             
             setTimeout(() => {
                 copyButton.textContent = "Copy";
                 copyButton.classList.remove('btn-success');
+                copyButton.classList.remove('text-white');
             }, 2000);
 
             console.log("Rich HTML content copied successfully!");
@@ -213,51 +215,70 @@ async function renderSchedule(jsonStringData) {
     
     // --- 1. Parse the JSON string data ---
     try {
-        // The core change: Parse the input string into a JavaScript object (array of tasks)
         tasks = JSON.parse(jsonStringData); 
     } catch (e) {
         console.error("Error parsing JSON data:", e);
         document.querySelector(GANTT_CONTAINER).innerHTML = 
             "<p>Error: The sprint schedule data format is invalid (not valid JSON).</p>";
-        return; // Stop execution if data is invalid
+        return;
+    }
+
+    // --- NEW: Calculate the Best View Mode ---
+    let bestViewMode = 'Month'; // Default fallback
+
+    if (tasks.length > 0) {
+        // Extract all start and end dates from the tasks array
+        const startDates = tasks.map(t => new Date(t.start));
+        const endDates = tasks.map(t => new Date(t.end));
+
+        // Find the earliest start and latest end date
+        const projectStart = new Date(Math.min(...startDates));
+        const projectEnd = new Date(Math.max(...endDates));
+
+        // Calculate the total duration in days (in milliseconds / milliseconds per day)
+        const durationMs = projectEnd - projectStart;
+        const durationDays = durationMs / (1000 * 60 * 60 * 24);
+
+        // Logic to select the view mode
+        if (durationDays <= 14) {
+            bestViewMode = 'Day'; // Project duration: 2 weeks or less
+        } else if (durationDays <= 90) {
+            bestViewMode = 'Week'; // Project duration: Up to 3 months
+        } else if (durationDays <= 365) {
+            bestViewMode = 'Month'; // Project duration: Up to 1 year
+        } else {
+            bestViewMode = 'Year'; // Project duration: Over 1 year
+        }
     }
 
     // --- 2. Initialize and render the Gantt chart ---
     try {
-        // Ensure the container exists before attempting to draw
         const container = document.querySelector(GANTT_CONTAINER);
         if (!container) {
             console.error(`Gantt container ID ${GANTT_CONTAINER} not found.`);
             return;
         }
 
-        // Initialize the Gantt chart using the parsed 'tasks' array
+        // Initialize the Gantt chart using the CALCULATED bestViewMode
         const ganttChart = new Gantt(GANTT_CONTAINER, tasks, {
-            // Configuration options
             header_height: 50,
             column_width: 30,
-            step: 24, // Display time in hours
-            
-            // Set the default view mode for the schedule
+            step: 24, 
             view_modes: ['Day', 'Week', 'Month', 'Year'],
-            view_mode: 'Month', 
+            view_mode: bestViewMode, // SETS THE OPTIMIZED VIEW MODE
             
-            // Optional: Define what happens when a task is clicked
             on_click: (task) => {
                 alert(`Task: ${task.name} is part of ${task.custom_class}`);
             },
-            
-            // Optional: Customize the tooltip that appears on hover
             custom_popup_html: function(task) {
                 return `<div><b>Sprint:</b> ${task.custom_class}</div><div><b>Ends:</b> ${task.end}</div>`;
             }
         });
         
-        // Example: Switch the view after initialization
-        ganttChart.change_view_mode('Week');
+        // Remove the static change_view_mode('Week') since it's now set dynamically
+        // ganttChart.change_view_mode('Week'); 
 
     } catch (e) {
-        // Catch errors specific to the Gantt library initialization or data processing
         console.error("Error displaying Gantt chart:", e);
         document.querySelector(GANTT_CONTAINER).innerHTML = 
             `<p>Could not initialize or render the Gantt chart: ${e.message}</p>`;

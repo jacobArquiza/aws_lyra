@@ -34,6 +34,7 @@ if (contextData) {
 const initial_response_stub = "This is an overview of my project. Please ask me any question that will help you get the context you need to create the key artifacts. ";
 const conciseness_request = "Please ensure your return question is concise, at most two sentences. If it cannot be contained within two sentences, please ask the question in multiple parts accross multiple back-and-forths ."
 
+let questionCount = 1;
 
 response_form.addEventListener('submit', (event)=>{
     event.preventDefault();
@@ -54,7 +55,9 @@ response_form.addEventListener('submit', (event)=>{
 
     res.then((data)=>{
         if(!data.done){
+            questionCount += 1;
             document.querySelector('#lyra-question').textContent = data.assistant;
+            document.querySelector('#lyra-question-count').textContent = questionCount;
             loading.classList.add("hidden");
         }
         else{
