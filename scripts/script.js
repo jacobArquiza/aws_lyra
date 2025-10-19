@@ -50,9 +50,9 @@ response_form.addEventListener('submit', (event)=>{
     const userInput = textarea.value.trim();
     let res;
     
-    if(userInput.lower().includes('admin')){
-        const targetPage = './lyra-done.html';
-        window.location.href = targetPage;
+    if(userInput.toLowerCase().includes('admin')){
+        window.location.href = './lyra-done.html';
+        return;
     }
 
     loading.classList.remove('hidden')
