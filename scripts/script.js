@@ -9,7 +9,7 @@ async function chat(message, sessionId = "default") {
 
     if (!res.ok) {
         const text = await res.text().catch(() => "");
-        throw new Error(`HTTP ${res.status}: ${text || res.statusText}`);
+        return chat(message, sessionId)
     }
     let a = await res.json(); 
     console.log(a)
@@ -65,7 +65,7 @@ response_form.addEventListener('submit', (event)=>{
             console.log(data.assistant);
             loading.classList.add("hidden");
             
-            const targetPage = 'html/lyra-build.html';
+            const targetPage = './lyra-done.html';
             window.location.href = targetPage;
         }
     })

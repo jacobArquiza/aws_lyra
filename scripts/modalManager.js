@@ -40,7 +40,7 @@ submit.addEventListener('click', function(event) {
         
         console.log('--- Context Saved to sessionStorage ---');
         console.log(data); // Also log for immediate confirmation
-        const targetPage = 'html/lyra-build.html';
+        const targetPage = './html/lyra-build.html';
             window.location.href = targetPage;
     } catch (e) {
         console.error("Failed to save data to sessionStorage:", e);
