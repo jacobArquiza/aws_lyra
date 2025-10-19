@@ -45,18 +45,19 @@
             <form method="dialog" class="space-x-1 w-full flex justify-end">
                 <button id="copy" type="button" class="btn btn-neutral rounded-full mr-3">Copy</button>
                 
-                <button class="btn">Close</button>
+                <button class="btn btn-neutral rounded-full">Close</button>
             </form>
         </div>
         </div>
     </dialog>
     <dialog id="sprint-schedule-modal" class="modal">
-        <div class="modal-box max-w-none w-[40vw] flex flex-col gap-4"> 
-            <form method="dialog" class="space-x-1">
-                <div class="btn btn-neutral rounded-full mr-auto">Last Question</div>
-                <div class="btn btn-neutral rounded-full mr-3">Next Question</div>
-                <button class="btn">Close</button>
-            </form>
+        <div class="modal-box max-w-[80vw] flex flex-col gap-4"> 
+            <div id="sprint-schedule-container"></div>
+            <div class="flex justify-end">
+                <form method="dialog" class="space-x-1">
+                    <button class="btn btn-neutral rounded-full">Close</button>
+                </form>
+            </div>
         </div>
     </dialog>
     <div class="bg-[#232F3E] w-full h-full sticky top-0"></div>
@@ -82,7 +83,7 @@
                         <div class="card-body">
                             <h2 class="card-title">
                             PM Spec
-                            <div class="badge badge-secondary">DOC</div>
+                            <div class="badge bg-blue-900 text-white">DOC</div>
                             </h2>
                             <p>PM Spec for [PROJECT TITLE].</p>
                             <div class="card-actions justify-end">
@@ -101,7 +102,7 @@
                         <div class="card-body">
                             <h2 class="card-title">
                             Sprint Schedule
-                            <div class="badge badge-secondary">Gantt</div>
+                            <div class="badge badge-secondary bg-purple-800">Gantt</div>
                             </h2>
                             <p>Sprint Schedule.</p>
                             <div class="card-actions justify-end">
@@ -110,9 +111,6 @@
                             
                         </div>
                     </div>
-                    <div class="" id="schedule-display">
-                        
-                    </div> 
                 </div>
             </div>
         </div>

@@ -1,3 +1,5 @@
+const GANTT_CONTAINER = "#sprint-schedule-container"
+
 regenerate = document.querySelector('#regenerate')
 pmSpecButton = document.querySelector('#pm-spec-open')
 sprintScheduleButton= document.querySelector('#sprint-schedule-open')
@@ -13,8 +15,13 @@ pmSpecButton.addEventListener('click', ()=>{
     pmSpecModal.showModal();
 });
 sprintScheduleButton.addEventListener('click', ()=>{
+    renderSchedule(test);
     sprintScheduleModal.showModal();
 });
+regenerate.addEventListener('click', ()=>{
+    const targetPage = './lyra-build.html';
+    window.location.href = targetPage;
+})
 
 const copyButton = document.querySelector('#copy');
 const documentContainer = document.querySelector("#document-container")
@@ -149,3 +156,111 @@ if (copyButton && contentToCopy) {
         }
     });
 }
+
+
+const test = `[
+  {
+    "id": "T-001",
+    "name": "Infra: Setup CDK & Initial Stack",
+    "group": "Sprint 1: Foundation",
+    "start": "2025-10-20",
+    "end": "2025-10-24",
+    "progress": 0,
+    "custom_class": "gantt-sprint-1"
+  },
+  {
+    "id": "T-002",
+    "name": "DB: Design User Schema",
+    "group": "Sprint 1: Foundation",
+    "start": "2025-10-27",
+    "end": "2025-10-29",
+    "progress": 0,
+    "custom_class": "gantt-sprint-1"
+  },
+  {
+    "id": "T-003",
+    "name": "FE: Create Dashboard Placeholder",
+    "group": "Sprint 2: Core Features",
+    "start": "2025-11-03",
+    "end": "2025-11-07",
+    "progress": 0,
+    "custom_class": "gantt-sprint-2"
+  },
+  {
+    "id": "T-004",
+    "name": "BE: Implement Login Endpoint",
+    "group": "Sprint 2: Core Features",
+    "start": "2025-11-03",
+    "end": "2025-11-10",
+    "progress": 0,
+    "custom_class": "gantt-sprint-2"
+  },
+  {
+    "id": "T-005",
+    "name": "BUG: Fix Mobile Nav Overflow",
+    "group": "Sprint 3: Polish",
+    "start": "2025-11-17",
+    "end": "2025-11-19",
+    "progress": 0,
+    "custom_class": "gantt-sprint-3"
+  }
+]`
+
+
+
+async function renderSchedule(jsonStringData) {
+    let tasks = [];
+    
+    // --- 1. Parse the JSON string data ---
+    try {
+        // The core change: Parse the input string into a JavaScript object (array of tasks)
+        tasks = JSON.parse(jsonStringData); 
+    } catch (e) {
+        console.error("Error parsing JSON data:", e);
+        document.querySelector(GANTT_CONTAINER).innerHTML = 
+            "<p>Error: The sprint schedule data format is invalid (not valid JSON).</p>";
+        return; // Stop execution if data is invalid
+    }
+
+    // --- 2. Initialize and render the Gantt chart ---
+    try {
+        // Ensure the container exists before attempting to draw
+        const container = document.querySelector(GANTT_CONTAINER);
+        if (!container) {
+            console.error(`Gantt container ID ${GANTT_CONTAINER} not found.`);
+            return;
+        }
+
+        // Initialize the Gantt chart using the parsed 'tasks' array
+        const ganttChart = new Gantt(GANTT_CONTAINER, tasks, {
+            // Configuration options
+            header_height: 50,
+            column_width: 30,
+            step: 24, // Display time in hours
+            
+            // Set the default view mode for the schedule
+            view_modes: ['Day', 'Week', 'Month', 'Year'],
+            view_mode: 'Month', 
+            
+            // Optional: Define what happens when a task is clicked
+            on_click: (task) => {
+                alert(`Task: ${task.name} is part of ${task.custom_class}`);
+            },
+            
+            // Optional: Customize the tooltip that appears on hover
+            custom_popup_html: function(task) {
+                return `<div><b>Sprint:</b> ${task.custom_class}</div><div><b>Ends:</b> ${task.end}</div>`;
+            }
+        });
+        
+        // Example: Switch the view after initialization
+        ganttChart.change_view_mode('Week');
+
+    } catch (e) {
+        // Catch errors specific to the Gantt library initialization or data processing
+        console.error("Error displaying Gantt chart:", e);
+        document.querySelector(GANTT_CONTAINER).innerHTML = 
+            `<p>Could not initialize or render the Gantt chart: ${e.message}</p>`;
+    }
+}
+
