@@ -25,8 +25,8 @@ const loading = document.querySelector("#loading")
 const contextData = sessionStorage.getItem('lyraFormData');
 const context_stub = "This is some context into my project: ";
 
-if (rawFormData) {
-    context_stub += rawFormData;
+if (contextData) {
+    context_stub += contextData;
 } else {
     context_stub += "";
 }
@@ -58,9 +58,12 @@ response_form.addEventListener('submit', (event)=>{
             loading.classList.add(hidden);
         }
         else{
-            document.querySelector('#lyra-question').textContent = "DONE";
+            document.querySelector('#lyra-question').textContent = "QUESTIONING COMPLETE";
             console.log(data.assistant);
             loading.classList.add(hidden);
+            
+            const targetPage = 'html/lyra-build.html';
+            window.location.href = targetPage;
         }
     })
 
