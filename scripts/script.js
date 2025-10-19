@@ -23,7 +23,7 @@ const loading = document.querySelector("#loading")
 
 
 const contextData = sessionStorage.getItem('lyraFormData');
-const context_stub = "This is some context into my project: ";
+let context_stub = "This is some context into my project: ";
 
 if (rawFormData) {
     context_stub += rawFormData;
