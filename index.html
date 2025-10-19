@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+     <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css"
+    type="text/css"
+  />
+    <link rel="stylesheet" href="./assets/fonts.css" />
+    <title>Lyra Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['var(--font-ember)'],
+            display: ['var(--font-ember-display)'],
+            condensed: ['var(--font-ember-condensed)'],
+            serif: ['var(--font-bookerly)'],
+          },
+          colors: {
+            amazonInk: '#131921',
+            amazonNavy: '#232f3e',
+            amazonGold: '#febd69',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="w-full h-screen grid grid-rows-[5%_90%_5%]">
+    <div class="bg-[#232F3E] w-full h-full"></div>
+      <div class="grid grid-rows-[50%_1fr]">
+        <div class="bg-gradient-to-b from-blue-200 to-white grid grid-[60%_40%] p-8">
+          <div class="flex justify-center items-center">
+            <span class="text-4xl w-[80%] flex flex-col items-center">
+              <h1 class="font-md mr-[30vw]">Plan your next project with <strong class="text-blue-700">Lyra</strong></h1>
+              <h1 class="font-md mr-[10vw] mt-8">The next generation <strong class="text-blue-700">AI Project Manager</strong></h1>
+            </span>
+          </div>
+          <div class="flex justify-center items-center">
+            <div class="btn btn-warning w-[30%] text-lg text-white">Start Planning with Lyra</div>
+          </div>
+        </div>
+        <div class="w-[85%] mx-auto">
+          <h1 class="text-2xl font-semibold">Current Projects Planned with Lyra</h1>
+          <div class="flex flex-wrap p-8">
+            <div class="btn btn-outline w-[15vw] h-[15vw]">asoidh</div>
+          </div>
+        </div>
+      </div>
+    <div class="bg-[#232F3E] w-full h-full"></div>
+</body>
+</html>

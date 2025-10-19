@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+     <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css"
+    type="text/css"
+  />
+    <link rel="stylesheet" href="../assets/fonts.css" />
+    <title>Lyra Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['var(--font-ember)'],
+            display: ['var(--font-ember-display)'],
+            condensed: ['var(--font-ember-condensed)'],
+            serif: ['var(--font-bookerly)'],
+          },
+          colors: {
+            amazonInk: '#131921',
+            amazonNavy: '#232f3e',
+            amazonGold: '#febd69',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="w-full h-screen grid grid-rows-[5%_90%_5%]">
+    <div class="bg-[#232F3E] w-full h-full"></div>
+    <div class="w-[90%] mx-auto  h-full grid grid-rows-[60%_40%] p-5">
+        <div class="w-full h-full grid grid-cols-[40%_60%]">
+            <div id="lyra-image-container" class="w-full h-full flex items-center justify-center overflow-hidden">
+                <img src="../assets/lyra-schedule.svg"
+                    alt="Lyra schedule"
+                    class="max-w-full max-h-full object-contain p-3" />
+            </div>
+            <div class="w-full h-full p-6]">
+                <h1 id="lyra-is" class="text-7xl m-5">Lyra is building your artifacts!</h1>
+                <h1 id="lyra-wants-to-know" class="text-4xl m-5 text-gray-600">She wants to know...</h1>
+                <h1 id="lyra-question" class="text-4xl m-5 my-8 text-[#7C9EFB] w-[80%] mx-auto ">Do you have a tech stack in place? Or do 
+                    you want me to generate one for you?</h1>
+            </div>
+        </div>
+        <div class="w-full h-full">
+            <form class="flex gap-2 w-full h-full flex flex-col p-5">
+                <label id="" for="">Question 3/12</label>
+                <textarea
+                    placeholder="Enter your text..."
+                    class="textarea textarea-bordered text-lg w-full h-[80%] align-top leading-normal"
+                ></textarea>
+                <div class="flex justify-end gap-4">
+                    <button type="submit" class="btn btn-warning w-[10%]">Skip Questioning</button>
+                    <button type="submit" class="btn bg-warning w-[10%]">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bg-[#232F3E] w-full h-full"></div>
+</body>
+<script src="../scripts/script.js"></script>
+</html>

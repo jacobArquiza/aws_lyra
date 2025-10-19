@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+     <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css"
+    type="text/css"
+  />
+    <link rel="stylesheet" href="../assets/fonts.css" />
+    <title>Lyra Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['var(--font-ember)'],
+            display: ['var(--font-ember-display)'],
+            condensed: ['var(--font-ember-condensed)'],
+            serif: ['var(--font-bookerly)'],
+          },
+          colors: {
+            amazonInk: '#131921',
+            amazonNavy: '#232f3e',
+            amazonGold: '#febd69',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="w-full h-screen grid grid-rows-[5%_90%_5%]">
+    
+    
+    <!-- Open the modal using ID.showModal() method -->
+    <dialog id="expand_thinking_modal" class="modal">
+    <div class="modal-box max-w-none w-[40vw]">
+        <h3 class="text-lg font-bold">Lyra's Question:</h3>
+        <p id="lyra-question-modal" class="py-4 text-[#7C9EFB]">Do you have a tech stack in place? Or do 
+                    you want me to generate one for you?</p>
+        <h3 class="text-lg font-bold">Your Answer:</h3>
+        <p class="text-gray-400">blah blah blah blah blah blah blah blah blah blah blah blah blah blah </p>
+        <h3 class="text-lg font-bold my-3">Lyra's Thought Process: </h3>
+            <div id="thinking-process-container">
+                <ul class="">
+                    <li class="flex flex-rows items-center gap-1 ml-4">
+                        <div class="text-4xl font-thin opacity-30 tabular-nums text-[#7C9EFB] mr-1">01</div>
+                        <span class="inline-block w-3 h-3 rounded-full border-2 border-[#7C9EFB]"></span>
+                        <p class="text-md">Thinking: </p>
+                        <p class="text-md">POoooosoaspdasodasodasodjasodaosjdnoasndoa</p>
+                    </li>
+                </ul>
+                    <li class="flex flex-rows items-center gap-1 ml-4">
+                        <div class="text-4xl font-thin opacity-30 tabular-nums text-[#7C9EFB] mr-1">01</div>
+                        <span class="inline-block w-3 h-3 rounded-full border-2 border-[#7C9EFB]"></span>
+                        <p class="text-md">Thinking: </p>
+                        <p class="text-md text-gray-600">POoooosoaspdasodasodasodjasodaosjdnoasndoa</p>
+                    </li>
+                </ul>
+                    <li class="flex flex-rows items-center gap-1 ml-4">
+                        <div class="text-4xl font-thin opacity-30 tabular-nums text-[#7C9EFB] mr-1">01</div>
+                        <span class="inline-block w-3 h-3 rounded-full border-2 border-[#7C9EFB]"></span>
+                        <p class="text-md">Thinking: </p>
+                        <p class="text-md text-gray-600">POoooosoaspdasodasodasodjasodaosjdnoasndoa</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full h-full flex space-x-3 items-end justify-end">
+            </div>
+            <div class="modal-action">
+                <form method="dialog" class="space-x-1">
+                    <div class="btn btn-primary mr-auto">Last Question</div>
+                    <div class="btn btn-primary">Next Question</div>
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+    </div>
+    </dialog>
+    
+    <div class="bg-[#232F3E] w-full h-full"></div>
+    <div class="w-[90%] mx-auto  h-full grid grid-rows-[60%_40%] p-5">
+        <div class="w-full h-full grid grid-cols-[40%_60%]">
+            <div id="lyra-image-container" class="w-full h-full flex items-center justify-center overflow-hidden">
+                <img src="../assets/lyra-schedule.svg"
+                    alt="Lyra schedule"
+                    class="max-w-full max-h-full object-contain p-3" />
+            </div>
+            <div class="w-full h-full p-6]">
+                <h1 id="lyra-is" class="text-7xl m-5">Lyra is building your artifacts!</h1>
+                <h1 id="lyra-wants-to-know" class="text-4xl m-5 text-gray-600">She wants to know...</h1>
+                <h1 id="lyra-question" class="text-4xl m-5 my-8 text-[#7C9EFB] ">Do you have a tech stack in place? Or do 
+                    you want me to generate one for you?</h1>
+                <h2 class="m-5 text-blue-300">< Lyra is considering using the Gemini API to handle autonomous... ></h2>
+
+                <div class="mx-5 px-2 text-[#2769A3] hover:font-semibold hover:cursor-pointer" onclick="expand_thinking_modal.showModal()">Expand</div>
+            </div>
+        </div>
+        <div class="w-full h-full">
+            <form class="flex gap-2 w-full h-full flex flex-col p-5">
+                <label id="" for="">Question 3/12</label>
+                <textarea
+                    placeholder="Enter your text..."
+                    class="textarea textarea-bordered text-lg w-full h-[80%] align-top leading-normal"
+                ></textarea>
+                <div class="flex justify-end gap-4">
+                    <button type="submit" class="btn btn-warning w-[10%]">Skip Questioning</button>
+                    <button type="submit" class="btn bg-warning w-[10%]">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bg-[#232F3E] w-full h-full"></div>
+</body>
+</html>

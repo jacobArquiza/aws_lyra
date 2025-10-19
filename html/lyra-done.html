@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+     <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css"
+    type="text/css"
+  />
+    <link rel="stylesheet" href="../assets/fonts.css" />
+    <title>Lyra Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['var(--font-ember)'],
+            display: ['var(--font-ember-display)'],
+            condensed: ['var(--font-ember-condensed)'],
+            serif: ['var(--font-bookerly)'],
+          },
+          colors: {
+            amazonInk: '#131921',
+            amazonNavy: '#232f3e',
+            amazonGold: '#febd69',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="w-full h-screen grid grid-rows-[5%_90%_5%]">    
+    <div class="bg-[#232F3E] w-full h-full"></div>
+    <div class="w-[90%] mx-auto  h-full grid grid-rows-[70%_30%] p-5">
+        <div class="w-full h-full grid grid-cols-[40%_60%]">
+            <div id="lyra-image-container" class="w-full h-full flex items-center justify-center overflow-hidden">
+                <img src="../assets/lyra-schedule.svg"
+                    alt="Lyra schedule"
+                    class="max-w-full max-h-full object-contain p-3" />
+            </div>
+            <div class="w-full h-full p-6 flex flex-col min-h-0">
+                <h1 id="lyra-is" class="text-7xl m-5">Lyra has built your artifacts!</h1>
+                <h1 id="lyra-question" class="text-4xl m-5 my-8 text-[#7C9EFB] ">How did she do?</h1>
+                <div class="flex flex-row flex-wrap h-[100%] overflow-hidden overflow-y-auto gap-6 justify-center">
+                    <div class="card bg-base-100 w-[30%] shadow-md">
+                        <figure>
+                            <img
+                            src="../assets/document.svg"
+                            alt="Shoes"
+                            class="max-w-full max-h-48 object-contain" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">
+                            PM Spec
+                            <div class="badge badge-secondary">DOC</div>
+                            </h2>
+                            <p>PM Spec for [PROJECT TITLE].</p>
+                            <div class="card-actions justify-end">
+                            <div class="btn badge badge-outline">OPEN</div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="card bg-base-100 w-[30%] shadow-md">
+                        <figure>
+                            <img
+                            src="../assets/calendar.svg"
+                            alt="Shoes"
+                            class="max-w-full max-h-48 object-contain" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">
+                            CodeCatalyst Backlog
+                            <div class="badge badge-secondary">BP</div>
+                            </h2>
+                            <p>CodeCatalyst blueprint for [PROJECT TITLE].</p>
+                            <div class="card-actions justify-end">
+                            <div class="btn badge badge-outline">OPEN</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="w-full h-full flex justify-end items-end">
+            <div class="btn btn-warning">Regenerate</div>
+        </div>
+    </div>
+    <div class="bg-[#232F3E] w-full h-full"></div>
+</body>
+</html>
