@@ -25,7 +25,7 @@ const intial_response_stub = "This is an overview of my project. Please ask me a
 response_form.addEventListener('submit', (event)=>{
     event.preventDefault();
     
-    const textarea = form.querySelector("#input-text-area");
+    const textarea = response_form.querySelector("#input-text-area");
     const userInput = textarea.value.trim();
     let res;
 
