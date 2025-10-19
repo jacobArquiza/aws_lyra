@@ -20,7 +20,7 @@ initial_response = true;
 
 response_form = document.querySelector('#lyra-input-form');
 
-const intial_response_stub = "This is an overview of my project. Please ask me any question that will help you get the context you need to create the key artifacts. ";
+const initial_response_stub = "This is an overview of my project. Please ask me any question that will help you get the context you need to create the key artifacts. ";
 
 response_form.addEventListener('submit', (event)=>{
     event.preventDefault();
